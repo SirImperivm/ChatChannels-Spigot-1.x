@@ -1,0 +1,12 @@
+settings:
+  default-channel-name: "Global"
+
+permissions:
+  commands:
+    user:
+      main: chatchannels.use
+      info: chatchannels.use
+      set: chatchannels.use
+    admin:
+      main: chatchannels.admin.main
+      reload: chatchannels.admin.reload

@@ -2,3 +2,37 @@ no-perm:
   command: "&8[&c!&8] &7Necessiti del permesso &c{node} &7per eseguire questo comando."
   action: "&8[&c!&8] &7Necessiti del permesso &c{node} &7per eseguire quest'azione."
 no-console: "&8[&c!&8] &7Questo comando è eseguibile solo da utenti in gioco."
+page-not-found: "&8[&c!&8] &7La pagina &c{page} &7non è stata trovata."
+plugin-reloaded: "&8[&a!&8] &7Il plugin è stato ricaricato con successo."
+invalid-args:
+  only-numbers-here: "&8[&c!&8] &7L'argomento &c{arg}&7 non è valido, è richiesto un numero."
+chat-channel:
+  info: "&8[&e!&8] &7Il tuo canale di scrittura attuale è: &e{channel-name}&7."
+  changed: "&8[&e!&8] &7Hai cambiato il canale di scrittura su &a{channel-name}&7."
+
+helps-creator:
+  admin-command:
+    header: "&8&m                              "
+    title: "&7&lComandi &c&lAdmin"
+    spacer: "&r"
+    line-format: "{command-name} &7- {command-description}"
+    page-format: "&cPagina: &7{currentpage}"
+    footer: "&8&m                              "
+    sponsor: "&e&lChatChannels &6&lv1"
+    lines:
+      - "&4/&cchatchannels[cc] &e[help] [page]-&cMostra la lista di comandi admin per questo plugin."
+      - "&4/&cchatchannels[cc] reload-&cRicarica il plugin."
+    max-lines-per-page: 2
+  main-command:
+    header: "&8&m                              "
+    title: "&7&lComandi"
+    spacer: "&r"
+    line-format: "{command-name} &7- {command-description}"
+    page-format: "&cPagina: &7{currentpage}"
+    footer: "&8&m                              "
+    sponsor: "&e&lChatChannels &6&lv1"
+    lines:
+      - "&9/&3channel[c] &b[help] [page]-&3Mostra la lista di comandi utili."
+      - "&9/&3channel[c] info-&3Mostra quale canale stai usando per scrivere."
+      - "&9/&3channel[c] set &b<channel-name>-&3Imposta il canale preferito."
+    max-lines-per-page: 3

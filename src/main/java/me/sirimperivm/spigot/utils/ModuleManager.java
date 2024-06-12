@@ -6,7 +6,9 @@ import me.sirimperivm.spigot.utils.other.Errors;
 import me.sirimperivm.spigot.utils.other.Logger;
 import me.sirimperivm.spigot.utils.other.Strings;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
+import java.util.HashMap;
 import java.util.List;
 
 @SuppressWarnings("all")
@@ -19,6 +21,8 @@ public class ModuleManager {
     private ConfigManager configManager;
     private Errors errors;
 
+    private HashMap<String, String> usedChannels;
+
     public ModuleManager(Main plugin) {
         this.plugin = plugin;
         strings = plugin.getStrings();
@@ -26,6 +30,8 @@ public class ModuleManager {
         log = plugin.getLog();
         configManager = plugin.getConfigManager();
         errors = plugin.getErrors();
+
+        usedChannels = new HashMap<>();
     }
 
     public void createHelp(CommandSender s, String helpTarget, int page) {
@@ -69,5 +75,34 @@ public class ModuleManager {
                 .replace("{currentpage}", String.valueOf(visualizedPage))
         );
         s.sendMessage(configManager.getTranslatedString(configManager.getMessages(),"helps-creator." + helpTarget + ".footer"));
+        String sponsor = configManager.getMessages().getString("helps-creator." + helpTarget + ".sponsor");
+        if (sponsor != null && !sponsor.equals("")) {
+            s.sendMessage(colors.translateString(sponsor));
+        }
+    }
+
+    public void switchPlayerChannel(Player p, String channel) {
+        getUsedChannels().put(p.getName(), channel);
+        p.sendMessage(configManager.getTranslatedString(configManager.getMessages(), "chat-channel.changed")
+                .replace("{channel-name}", channel)
+        );
+    }
+
+    public boolean containsOnlyNumbers(String target) {
+        int number;
+        try {
+            number = Integer.parseInt(target);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public String getChannelName(String playerName) {
+        return getUsedChannels().get(playerName);
+    }
+
+    public HashMap<String, String> getUsedChannels() {
+        return usedChannels;
     }
 }
