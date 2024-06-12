@@ -2,6 +2,7 @@ package me.sirimperivm.spigot;
 
 import me.sirimperivm.spigot.commands.AdminCommand;
 import me.sirimperivm.spigot.commands.MainCommand;
+import me.sirimperivm.spigot.events.Events;
 import me.sirimperivm.spigot.extras.dependencies.LBApi;
 import me.sirimperivm.spigot.utils.ConfigManager;
 import me.sirimperivm.spigot.utils.ModuleManager;
@@ -52,6 +53,7 @@ public final class Main extends JavaPlugin {
 
         getCommand("channel").setExecutor(new MainCommand(plugin));
         getCommand("channel").setTabCompleter(new MainCommand(plugin));
+        getPluginManager().registerEvents(new Events(plugin), plugin);
 
         log.success("Plugin attivato correttamente!");
     }

@@ -9,6 +9,8 @@ invalid-args:
 chat-channel:
   info: "&8[&e!&8] &7Il tuo canale di scrittura attuale è: &e{channel-name}&7."
   changed: "&8[&e!&8] &7Hai cambiato il canale di scrittura su &a{channel-name}&7."
+  format: "&8[&f{channel-name}&8] {role-tag} &f{player-name}&8: &f{message}"
+muted: "&8[&c!&8] &7Sei mutato, perciò non puoi scrivere in nessun canale."
 
 helps-creator:
   admin-command:
