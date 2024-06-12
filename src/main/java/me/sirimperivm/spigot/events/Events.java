@@ -55,17 +55,18 @@ public class Events implements Listener {
         String playerUuid = p.getUniqueId().toString();
 
         e.setCancelled(true);
-        boolean isMuted = false;
-        if (plugin.isFoundLiteBans() && plugin.getLitebansApi().isMuted(playerUuid, playerName)) {
-            isMuted = true;
-        }
-        if (isMuted) {
-            p.sendMessage(configManager.getTranslatedString(configManager.getMessages(), "muted"));
-            return;
-        }
-
         HashMap<String, String> chatChannels = moduleManager.getUsedChannels();
         String playerChannel = chatChannels.get(playerName);
+
+        int i=0;
+        for (String key : chatChannels.keySet()) {
+            String value = chatChannels.get(key);
+            if (value.equals(playerChannel)) i++;
+        }
+
+        if (i==1) {
+            p.sendMessage(configManager.getTranslatedString(configManager.getMessages(), "chat-channel.no-one-hear-you"));
+        }
         for (String pName : chatChannels.keySet()) {
             String channel = chatChannels.get(pName);
             Player player = Bukkit.getPlayerExact(pName);

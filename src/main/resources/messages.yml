@@ -8,9 +8,9 @@ invalid-args:
   only-numbers-here: "&8[&c!&8] &7L'argomento &c{arg}&7 non è valido, è richiesto un numero."
 chat-channel:
   info: "&8[&e!&8] &7Il tuo canale di scrittura attuale è: &e{channel-name}&7."
-  changed: "&8[&e!&8] &7Hai cambiato il canale di scrittura su &a{channel-name}&7."
+  changed: "&8[&e!&8] &7Hai cambiato il canale di scrittura su &e{channel-name}&7."
   format: "&8[&f{channel-name}&8] {role-tag} &f{player-name}&8: &f{message}"
-muted: "&8[&c!&8] &7Sei mutato, perciò non puoi scrivere in nessun canale."
+  no-one-hear-you: "&8[&e!&8] &7In questo canale ci sei solo tu, nessuno può leggere il tuo messaggio."
 
 helps-creator:
   admin-command:
