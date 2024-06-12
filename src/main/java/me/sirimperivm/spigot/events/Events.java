@@ -13,6 +13,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
 
@@ -73,7 +74,16 @@ public class Events implements Listener {
         }
 
         if (i==1) {
-            p.sendMessage(configManager.getTranslatedString(configManager.getMessages(), "chat-channel.no-one-hear-you"));
+            if (!moduleManager.getAloneCooldownList().contains(playerName)) {
+                p.sendMessage(configManager.getTranslatedString(configManager.getMessages(), "chat-channel.no-one-hear-you"));
+                moduleManager.getAloneCooldownList().add(playerName);
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        moduleManager.getAloneCooldownList().remove(playerName);
+                    }
+                }.runTaskLater(plugin, 5*60*20L);
+            }
         }
         for (String pName : chatChannels.keySet()) {
             String channel = chatChannels.get(pName);

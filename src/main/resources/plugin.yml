@@ -4,6 +4,8 @@ main: me.sirimperivm.spigot.Main
 api-version: '1.20'
 authors: [SirImperivm_]
 description: Defines in which channel you want to speak
+softdepend:
+  - LiteBans
 
 commands:
   chatchannels:

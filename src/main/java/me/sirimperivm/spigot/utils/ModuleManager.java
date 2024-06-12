@@ -8,6 +8,7 @@ import me.sirimperivm.spigot.utils.other.Strings;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class ModuleManager {
     private Errors errors;
 
     private HashMap<String, String> usedChannels;
+    private List<String> aloneCooldownList;
 
     public ModuleManager(Main plugin) {
         this.plugin = plugin;
@@ -32,6 +34,7 @@ public class ModuleManager {
         errors = plugin.getErrors();
 
         usedChannels = new HashMap<>();
+        aloneCooldownList = new ArrayList<>();
     }
 
     public void createHelp(CommandSender s, String helpTarget, int page) {
@@ -104,5 +107,9 @@ public class ModuleManager {
 
     public HashMap<String, String> getUsedChannels() {
         return usedChannels;
+    }
+
+    public List<String> getAloneCooldownList() {
+        return aloneCooldownList;
     }
 }
