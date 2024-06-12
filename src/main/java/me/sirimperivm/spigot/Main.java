@@ -3,6 +3,7 @@ package me.sirimperivm.spigot;
 import me.sirimperivm.spigot.commands.AdminCommand;
 import me.sirimperivm.spigot.commands.MainCommand;
 import me.sirimperivm.spigot.events.Events;
+import me.sirimperivm.spigot.extras.dependencies.LBApi;
 import me.sirimperivm.spigot.utils.ConfigManager;
 import me.sirimperivm.spigot.utils.ModuleManager;
 import me.sirimperivm.spigot.utils.colors.Colors;
@@ -23,11 +24,17 @@ public final class Main extends JavaPlugin {
     private ConfigManager configManager;
     private Errors errors;
     private ModuleManager moduleManager;
+    private LBApi litebansApi;
 
     private String defaultChannelName;
+    private boolean foundLiteBans;
 
     private void setupDependencies() {
-
+        if (getPluginManager().getPlugin("LiteBans") != null) {
+            foundLiteBans = true;
+            litebansApi = new LBApi(plugin);
+            log.success("Dependency Found: LiteBans... Connected!");
+        }
     }
 
     @Override
@@ -91,5 +98,13 @@ public final class Main extends JavaPlugin {
 
     public ModuleManager getModuleManager() {
         return moduleManager;
+    }
+
+    public boolean isFoundLiteBans() {
+        return foundLiteBans;
+    }
+
+    public LBApi getLitebansApi() {
+        return litebansApi;
     }
 }

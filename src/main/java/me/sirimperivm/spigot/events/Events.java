@@ -55,6 +55,14 @@ public class Events implements Listener {
         String playerUuid = p.getUniqueId().toString();
 
         e.setCancelled(true);
+        boolean isMuted = false;
+        if (plugin.isFoundLiteBans() && plugin.getLitebansApi().isMuted(playerUuid, playerName)) {
+            isMuted = true;
+        }
+        if (isMuted) {
+            return;
+        }
+
         HashMap<String, String> chatChannels = moduleManager.getUsedChannels();
         String playerChannel = chatChannels.get(playerName);
 
